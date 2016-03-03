@@ -14,7 +14,11 @@ $this->breadcrumbs=array(
 
 		<div class="row-fluid">
 			<div class="span12 center login-header">
-				<h2>Welcome to Yiirisma</h2>
+				<h2>Selamat Datang di</h2>
+				<h1>Sistem Informasi Penelitian dan Pengembangan</h1>
+				<h1>Kabupaten Banyumas</h1>
+			</div>
+			<div class="span12 center login-header">
 			</div>
 			<!--/span-->
 		</div>
@@ -22,8 +26,7 @@ $this->breadcrumbs=array(
 
 		<div class="row-fluid">
 			<div class="well span5 center login-box">
-				<div class="alert alert-info">Please login with your Username and
-					Password.</div>
+				<div class="alert alert-info">Silahkan masukkan Username dan Password anda.</div>
 				<?php $form=$this->beginWidget('CActiveForm', array(
 						'id'=>'login-form',
 						'enableClientValidation'=>true,

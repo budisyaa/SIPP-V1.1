@@ -50,10 +50,15 @@ class AkunController extends Controller
             $model->status_peserta='1';
             $model->TANGGAL_MODIFIKASI= new CDbExpression('NOW()');
             $model->STATUS='0';
+            $model->STATUS_HASIL='0';
             $model->password = md5($model->password);
             if ($model->save()) {
             $model->FOTO_PESERTA->saveAs(Yii::app()->basePath . self::URLUPLOAD . $model->FOTO_PESERTA . '');
-            $this->redirect(array('akun/'));
+            $name = getcwd() . '/upload/foto_peserta/' . $model->FOTO_PESERTA;
+            $image = Yii::app()->image->load($name);
+            $image->resize(151,201);
+            $image->save();
+            $this->redirect(array('site/login/'));
             }
         }
         $this->render('daftar', array("model" => $model));
@@ -102,7 +107,7 @@ class AkunController extends Controller
                 $model->SYARAT3->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT3 . '');
                 $model->SYARAT4->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT4 . '');
                 $model->SYARAT5->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT5 . '');
-                $this->redirect(array('akun/pesertainfo/'));
+                $this->redirect(array('/site/logout/'));
             }
         }
         /* render ke view ubah password */
@@ -124,8 +129,8 @@ class AkunController extends Controller
                         /* jika changepassword maka direct ke halaman success */
             if ($model->save()) {
                 $pesertaModel->save();
-                $model->NAMA_PROPOSAL->saveAs(Yii::app()->basePath . self::URLUPLOADPROPOSAL . $model->NAMA_PROPOSAL . '');
-                $this->redirect(array('akun/tambahproposal/'));
+                $model->NAMA_PROPOSAL->saveAs(Yii::app()->basePath . self::URLUPLOADPROPOSAL . $model->ID_PROPOSAL . ' ' . $model->NAMA_PROPOSAL . '');
+                $this->redirect(array('akun/tambahsyarat/'));
             }
         }
         /* render ke view ubah password */

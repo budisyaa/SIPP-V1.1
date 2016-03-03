@@ -51,6 +51,19 @@ class PesertaController extends Controller
 		));
 	}
 
+		public function actionPesertahasil()
+	{
+		IsAuth::Admin();
+		$model=new Peserta('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Peserta']))
+			$model->attributes=$_GET['Peserta'];
+
+		$this->render('pesertahasil',array(
+			'model'=>$model,
+		));
+	}
+
 	public function actionUpdatestatus($id)
 	{
 		IsAuth::Admin();
@@ -71,6 +84,11 @@ class PesertaController extends Controller
 					$model -> status_peserta = '1';
 					$model->save();
 				}
+				$status = $model ->findByAttributes(array('ID_PESERTA' => $id, 'STATUS' => '2'));
+				if($status !=null){
+					$model -> status_peserta = '0';
+					$model->save();
+				}
 				
 			}
 				$this->redirect(array('view','id'=>$model->ID_PESERTA));
@@ -81,6 +99,31 @@ class PesertaController extends Controller
 		));
 	}
 	
+	public function actionUpdatestatushasil($id)
+	{
+		IsAuth::Admin();
+		
+		$model=$this->loadModel($id);
+
+		
+		if(isset($_POST['Peserta']))
+		{
+			$model->attributes=$_POST['Peserta'];
+			
+			if($model->save()){
+				$model->save();
+				
+				
+			}
+				$this->redirect(array('view','id'=>$model->ID_PESERTA));
+		}
+
+		$this->render('updatestatushasil',array(
+			'model'=>$model,
+		));
+	}
+	
+
 	public function actionUpdate($id)
 	{
 		IsAuth::Admin();

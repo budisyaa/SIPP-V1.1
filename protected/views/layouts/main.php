@@ -63,7 +63,7 @@
 				</div> -->
 
 				<?php
-					if(isset(Yii::app()->user->pesertaLogin) || isset(Yii::app()->user->adminLogin)) {
+					if(isset(Yii::app()->user->pesertaLogin)) {
 				?>
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i
@@ -79,7 +79,26 @@
 					</ul>
 				</div>
 				<?php }?>
-				<!-- user dropdown ends -->
+				<!-- peserta dropdown ends -->
+
+				<?php
+					if(isset(Yii::app()->user->adminLogin)) {
+				?>
+				<div class="btn-group pull-right">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i
+						class="icon-user"></i><span class="hidden-phone"> <?php echo Yii::app()->user->name?>
+					</span> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="<?php echo Yii::app()->baseUrl?>#">Profil</a></li>
+						<li class="divider"></li>
+						<li><a href="<?php echo Yii::app()->baseUrl?>/Manageadmin/updateadmin">Ubah Profil</a></li>
+						<li class="divider"></li>
+						<li><?php echo CHtml::link('Logout',array('/admin/logout'));?></li>
+					</ul>
+				</div>
+				<?php }?>
+
 
 				<?php
 					if(!isset(Yii::app()->user->pesertaLogin) && !isset(Yii::app()->user->adminLogin)) {
@@ -117,17 +136,17 @@
 			<div id="content" class="span10">
 				<!-- content starts -->
 				<div>
-					<div class="breadcrumb">
-						<?php
+					<!-- <div class="breadcrumb"> -->
+						<!-- <?php
 						if(empty($this->breadcrumbs))
 							$this->breadcrumbs = array ('');
 						$this->widget('zii.widgets.CBreadcrumbs', array(
 					 		'links'=>$this->breadcrumbs,
-						)); ?>
+						)); ?> -->
 						<!-- breadcrumbs -->
 
 					</div>
-				</div>
+				<!-- </div> -->
 				<?php foreach (Yii::app()->user->getFlashes() as $key=>$message){
 					echo '<div class="alert alert-'.$key.'">
 					<button type="button" class="close" data-dismiss="alert">×</button>'.ucfirst($message).'</div>';

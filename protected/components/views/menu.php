@@ -21,10 +21,7 @@
 						<?php
 						if(isset(Yii::app()->user->adminLogin)) {
 						?>
-						<li><a class="ajax-link" href="<?php if(isset(Yii::app()->user->adminLogin)) echo Yii::app()->createUrl('/Manageadmin/admin')?>"><i
-								class="icon-user"></i><span class="hidden-tablet"> Data User</span>
-						</a></li>
-
+						
 						<li><a class="ajax-link" href="<?php if(isset(Yii::app()->user->adminLogin)) echo Yii::app()->createUrl('/Manageadmin/admin')?>"><i
 								class="icon-user"></i><span class="hidden-tablet"> Data User</span>
 						</a></li>
@@ -32,36 +29,61 @@
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('Peserta/admin')?>"><i
 								class="icon-user"></i><span class="hidden-tablet"> Data Peserta</span>
 						</a></li>
+						
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('/masaberlaku/admin')?>"><i
 								class="icon-calendar"></i><span class="hidden-tablet"> Data Masa Berlaku</span>
 						</a></li>
+						
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('proposal/admin')?>"><i
 								class="icon-folder-open"></i><span class="hidden-tablet"> Data Proposal</span>
 						</a></li>
+						
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('syarat/admin')?>"><i
 								class="icon-folder-open"></i><span class="hidden-tablet"> Data Syarat</span>
 						</a></li>
+						
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('hasil/admin')?>"><i
 								class="icon-folder-open"></i><span class="hidden-tablet"> Data Hasil</span>
 						</a></li>
+						
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('peserta/peserta')?>"><i
-								class="icon-list-alt"></i><span class="hidden-tablet"> Data Status</span>
+								class="icon-list-alt"></i><span class="hidden-tablet"> Data Status Proposal</span>
 						</a></li>
+						
+						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('peserta/pesertahasil')?>"><i
+								class="icon-list-alt"></i><span class="hidden-tablet"> Data Status Hasil</span>
+						</a></li>
+						
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('artikel/admin')?>"><i
 								class="icon-align-center"></i><span class="hidden-tablet"> Data Artikel</span>
 						</a></li>
 						<?php }?>
-						
 
 						<?php
 						if(isset(Yii::app()->user->pesertaLogin)) {
+							?>
+						<?php
+						if(isset(Yii::app()->user->pesertaLogin) && Peserta::cekstatus(Yii::app()->user->id) != null) {
 						?>
-						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('#')?>"><i
-								class="icon-align-center"></i><span class="hidden-tablet"> Surat Keterangan Penelitian</span>
+												
+						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('/akun/tambahproposal')?>"><i
+								class="icon-align-center"></i><span class="hidden-tablet"> Unggah Proposal</span>
 						</a></li>
-						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('#')?>"><i
-								class="icon-align-center"></i><span class="hidden-tablet"> Surat Keterangan Selesai</span>
+
+
+						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('/akun/tambahsyarat')?>"><i
+								class="icon-align-center"></i><span class="hidden-tablet"> Unggah Syarat</span>
 						</a></li>
+
+						<?php } else {?>
+							<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('#')?>"><i
+								class="icon-align-center"></i><span class="hidden-tablet"> Cetak SK.Penelitian</span>
+						</a></li>
+
+						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('/akun/tambahhasil')?>"><i
+								class="icon-align-center"></i><span class="hidden-tablet"> Unggah Hasil</span>
+						</a></li>
+						<?php }?>	
 						<?php }?>
 
 						<!-- <li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/ui')?>"><i class="icon-eye-open"></i><span
@@ -92,12 +114,8 @@
 								class="icon-folder-open"></i><span class="hidden-tablet"> File
 									Manager</span> </a></li>
 						<li><a href="<?php echo Yii::app()->createUrl('site/index/view/tour')?>"><i class="icon-globe"></i><span
-								class="hidden-tablet"> Tour</span> </a></li>	 -->		
-						<?php /* 
-						<li><a href="<?php echo Yii::app()->createUrl('site/index/view/error')?>"><i class="icon-ban-circle"></i><span
-								class="hidden-tablet"> Error Page</span> </a></li>
-						<li><a href="<?php echo Yii::app()->createUrl('site/index/view/login')?>"><i class="icon-lock"></i><span
-								class="hidden-tablet"> Login Page</span> </a></li> */?>
+								class="hidden-tablet"> Tour</span> </a></li> 
+						 -->
 						
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input

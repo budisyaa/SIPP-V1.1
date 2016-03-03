@@ -18,7 +18,10 @@ class Peserta extends CActiveRecord
         }
     }*/
 
- public function formatStatus() {
+
+						
+
+public function formatStatus() {
         if ($this->STATUS == 0)
             return "Pending";
         else if ($this->STATUS == 1)
@@ -26,6 +29,21 @@ class Peserta extends CActiveRecord
         else
         	return "Ditolak";
     }
+
+public function cekstatus($id) {
+		$status = Peserta::model()->findByAttributes(array('ID_PESERTA' => $id, 'STATUS' => '0'));	
+		return $status;
+	}
+
+public function formatStatushasil() {
+        if ($this->STATUS_HASIL == 0)
+            return "Pending";
+        else if ($this->STATUS_HASIL == 1)
+            return "Diterima";
+        else
+        	return "Ditolak";
+    }
+
 
     public function encrypt($value) {
         return md5($value);
@@ -36,8 +54,9 @@ class Peserta extends CActiveRecord
 		
 		return array(
 			array('status_peserta', 'numerical', 'integerOnly' => true),
-			array('NAMA, NO_ID, JUDUL, ASAL_INS, BIDANG, PEKERJAAN, ALAMAT, LOKASI_PT, PENANGGUNG_JAWAB, JENIS_KELAMIN, FOTO_PESERTA, username, password, EMAIL, STATUS, TEMPAT_LAHIR, code_reg', 'length', 'max'=>1024),
-			array('NO_HP', 'length', 'max'=>13),
+			array('FOTO_PESERTA , NAMA , NO_ID , JUDUL , username , password , EMAIL', 'required'),
+			array('NAMA, NO_ID, JUDUL, ASAL_INS, BIDANG, PEKERJAAN, ALAMAT, LOKASI_PT, PENANGGUNG_JAWAB, JENIS_KELAMIN, FOTO_PESERTA, username, password, EMAIL, STATUS, STATUS_HASIL, TEMPAT_LAHIR, code_reg', 'length', 'max'=>1024),
+			array('NO_HP', 'length', 'max'=>15),
 			array('MASA_BERLAKU_AWAL, MASA_BERLAKU_AKHIR, TANGGAL_MODIFIKASI, TANGGAL_LAHIR', 'safe'),
 			
 			array('ID_PESERTA, NAMA, NO_ID, JUDUL, ASAL_INS, BIDANG, PEKERJAAN, ALAMAT, LOKASI_PT, PENANGGUNG_JAWAB, JENIS_KELAMIN, FOTO_PESERTA, username, password, NO_HP, EMAIL, STATUS, MASA_BERLAKU_AWAL, MASA_BERLAKU_AKHIR, TANGGAL_MODIFIKASI, TEMPAT_LAHIR, TANGGAL_LAHIR', 'safe', 'on'=>'search'),
@@ -99,7 +118,7 @@ public function randomCode() {
 			'password' => 'Password',
 			'NO_HP' => 'No Handphone',
 			'EMAIL' => 'Email',
-			'STATUS' => 'Status',
+			'STATUS' => 'Status Proposal',
 			'MASA_BERLAKU_AWAL' => 'Masa Berlaku Awal',
 			'MASA_BERLAKU_AKHIR' => 'Masa Berlaku Akhir',
 			'TANGGAL_MODIFIKASI' => 'Tanggal Modifikasi',
@@ -107,6 +126,7 @@ public function randomCode() {
 			'TANGGAL_LAHIR' => 'Tanggal Lahir',
 			'code_reg' => 'Kode Registrasi',
 			'status_peserta' => 'Status Peserta',
+			'STATUS_HASIL' => 'Status Hasil'
 		);
 	}
 

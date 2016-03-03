@@ -49,7 +49,7 @@ $('.search-form form').submit(function(){
 			'value'=>'$data->iDPESERTA->NAMA','sortable'=>TRUE,
 		
 	                ),
-		'NAMA_PROPOSAL',
+		// 'NAMA_PROPOSAL',
 		array(
 				'name'=>'NAMA_PROPOSAL',
 				'header'=>'Nama Proposal',
@@ -57,6 +57,7 @@ $('.search-form form').submit(function(){
 				'value'=>'CHtml::link("$data->NAMA_PROPOSAL", array("view", "id"=>$data->ID_PROPOSAL),array("title"=>"click to view order"))',
 				 
 			),
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

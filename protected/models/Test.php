@@ -1,28 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "syarat".
+ * This is the model class for table "test".
  *
- * The followings are the available columns in table 'syarat':
- * @property integer $ID_SYARAT
- * @property integer $ID_PESERTA
- * @property string $SYARAT1
- * @property string $SYARAT2
- * @property string $SYARAT3
- * @property string $SYARAT4
- * @property string $SYARAT5
- *
- * The followings are the available model relations:
- * @property Peserta $iDPESERTA
+ * The followings are the available columns in table 'test':
+ * @property integer $id
+ * @property string $name
  */
-class Syarat extends CActiveRecord
+class Test extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'syarat';
+		return 'test';
 	}
 
 	/**
@@ -33,11 +25,12 @@ class Syarat extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ID_PESERTA', 'numerical', 'integerOnly'=>true),
-			array('SYARAT1, SYARAT2, SYARAT3, SYARAT4, SYARAT5', 'length', 'max'=>1024),
+			array('id', 'required'),
+			array('id', 'numerical', 'integerOnly'=>true),
+			array('name', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('ID_SYARAT, ID_PESERTA, SYARAT1, SYARAT2, SYARAT3, SYARAT4, SYARAT5', 'safe', 'on'=>'search'),
+			array('id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,7 +42,6 @@ class Syarat extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'iDPESERTA' => array(self::BELONGS_TO, 'Peserta', 'ID_PESERTA'),
 		);
 	}
 
@@ -59,13 +51,8 @@ class Syarat extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ID_SYARAT' => 'Id Syarat',
-			'ID_PESERTA' => 'Nama Peserta',
-			'SYARAT1' => 'Surat Permohonan dari Instansi/Institusi dan disetujui oleh Instansi/Institusi Pemohon',
-			'SYARAT2' => 'Identitas Pemohon (KTP/SIM/KTM)',
-			'SYARAT3' => 'Surat Izin/Rekomendasi dari Kantor Kesbangpol Kabupaten Banyumas',
-			'SYARAT4' => 'Syarat4',
-			'SYARAT5' => 'Syarat5',
+			'id' => 'ID',
+			'name' => 'Name',
 		);
 	}
 
@@ -87,13 +74,8 @@ class Syarat extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('ID_SYARAT',$this->ID_SYARAT);
-		$criteria->compare('ID_PESERTA',$this->ID_PESERTA);
-		$criteria->compare('SYARAT1',$this->SYARAT1,true);
-		$criteria->compare('SYARAT2',$this->SYARAT2,true);
-		$criteria->compare('SYARAT3',$this->SYARAT3,true);
-		$criteria->compare('SYARAT4',$this->SYARAT4,true);
-		$criteria->compare('SYARAT5',$this->SYARAT5,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -104,7 +86,7 @@ class Syarat extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Syarat the static model class
+	 * @return Test the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

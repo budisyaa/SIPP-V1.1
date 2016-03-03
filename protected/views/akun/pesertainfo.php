@@ -19,14 +19,13 @@ $this->menu=array(
 );
 ?>
 
+<h1>Profil <?php echo $model->NAMA; ?></h1>
 <a href="<?php echo Yii::app()->request->baseUrl . '/upload/foto_peserta/' . $model->FOTO_PESERTA; ?>">
         <?php
         /* menampilkan gambar */
-        echo CHtml::image(Yii::app()->request->baseUrl . '/upload/foto_peserta/' . $model->FOTO_PESERTA . '', '', array("style" => "width:200px;margin-left:10px;", "class" => "left", 'hspace' => 12));
+        echo CHtml::image(Yii::app()->request->baseUrl . '/upload/foto_peserta/' . $model->FOTO_PESERTA . '', '', array("style" => "width:80px;margin-left:10px;", "class" => "center", 'hspace' => 12));
         ?>
     </a>
-
-<h1>Profil <?php echo $model->NAMA; ?></h1>
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(

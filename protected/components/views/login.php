@@ -4,7 +4,7 @@ $no_visible_elements=true;
 
 			<div class="row-fluid">
 				<div class="span12 center login-header">
-					<h2>Welcome to Yiirisma</h2>
+					<h2>Selamat Datang di</h2>
 				</div><!--/span-->
 			</div><!--/row-->
 			

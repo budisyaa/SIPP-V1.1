@@ -1,24 +1,27 @@
-<?php
-/* @var $this HasilController */
-/* @var $model Hasil */
-/* @var $form CActiveForm */
-?>
 
-<div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'hasil-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->errorSummary($model); ?>
+
+<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i> Form Elements</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal">
+						  <fieldset>
+							<legend>Datepicker, Autocomplete, WYSIWYG</legend>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ID_PESERTA'); ?>
@@ -44,4 +47,14 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div>
+
+							</fieldset>
+						</form>   
+
+					</div>
+				</div><!--/span-->
+
+			</div>
+
+	<!-- form -->

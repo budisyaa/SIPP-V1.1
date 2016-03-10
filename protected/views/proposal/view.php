@@ -17,6 +17,9 @@ $this->menu=array(
 ?>
 
 <h1>View Proposal #<?php echo $model->ID_PROPOSAL; ?></h1>
+    <!-- CHtml::link(CHtml::encode($model->ApplicationDocument ),array(Yii::app()->baseUrl . '/assets/uploads/documents/'.$model->ApplicationDocument))
+    CHtml::link(CHtml::encode($model->ApplicationDocument), Yii::app()->baseUrl . 'assets/uploads/documents/' . $model->ApplicationDocument,array('target'=>'_blank') -->
+
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -26,3 +29,11 @@ $this->menu=array(
 		'NAMA_PROPOSAL',
 	),
 )); ?>
+<h3>Berkas Proposal:</h3>
+<a href="<?php echo Yii::app()->request->baseUrl . '/upload/proposal/' . $model->NAMA_PROPOSAL; ?>">
+        <?php
+        /* menampilkan gambar */
+        echo CHtml::link(CHtml::encode($model->NAMA_PROPOSAL), Yii::app()->request->baseUrl . '/upload/proposal/' . $model->NAMA_PROPOSAL,array('target'=>'_blank'));
+        ?>
+    </a>
+

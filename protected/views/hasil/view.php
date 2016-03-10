@@ -27,3 +27,19 @@ $this->menu=array(
 		'NAMA_HASIL2',
 	),
 )); ?>
+
+<h3>Berkas Syarat:</h3>
+	<a href="<?php echo Yii::app()->request->baseUrl . '/upload/hasil/' . $model->NAMA_HASIL; ?>">
+        <?php
+        /* menampilkan gambar */
+        echo CHtml::link(CHtml::encode($model->NAMA_HASIL), Yii::app()->request->baseUrl . '/upload/hasil/' . $model->NAMA_HASIL,array('target'=>'_blank'));
+        ?>
+    </a>
+    <br>
+    <a href="<?php echo Yii::app()->request->baseUrl . '/upload/hasil/' . $model->NAMA_HASIL2; ?>">
+        <?php
+        /* menampilkan gambar */
+        echo CHtml::link(CHtml::encode($model->NAMA_HASIL2), Yii::app()->request->baseUrl . '/upload/hasil/' . $model->NAMA_HASIL2,array('target'=>'_blank'));
+        ?>
+    </a>
+    </br>

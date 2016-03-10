@@ -34,10 +34,10 @@ class Syarat extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('ID_PESERTA', 'numerical', 'integerOnly'=>true),
-			array('SYARAT1, SYARAT2, SYARAT3, SYARAT4, SYARAT5', 'length', 'max'=>1024),
+			array('SYARAT1, SYARAT2, SYARAT3',  'length', 'max'=>1024),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('ID_SYARAT, ID_PESERTA, SYARAT1, SYARAT2, SYARAT3, SYARAT4, SYARAT5', 'safe', 'on'=>'search'),
+			array('ID_SYARAT, ID_PESERTA, SYARAT1, SYARAT2, SYARAT3', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,11 +61,11 @@ class Syarat extends CActiveRecord
 		return array(
 			'ID_SYARAT' => 'Id Syarat',
 			'ID_PESERTA' => 'Nama Peserta',
-			'SYARAT1' => 'Surat Permohonan dari Instansi/Institusi dan disetujui oleh Instansi/Institusi Pemohon',
-			'SYARAT2' => 'Identitas Pemohon (KTP/SIM/KTM)',
-			'SYARAT3' => 'Surat Izin/Rekomendasi dari Kantor Kesbangpol Kabupaten Banyumas',
-			'SYARAT4' => 'Syarat4',
-			'SYARAT5' => 'Syarat5',
+			'SYARAT1' => 'Surat Permohonan',
+			'SYARAT2' => 'Identitas',
+			'SYARAT3' => 'Surat Rekomendasi',
+			// 'SYARAT4' => 'Syarat4',
+			// 'SYARAT5' => 'Syarat5',
 		);
 	}
 
@@ -92,8 +92,7 @@ class Syarat extends CActiveRecord
 		$criteria->compare('SYARAT1',$this->SYARAT1,true);
 		$criteria->compare('SYARAT2',$this->SYARAT2,true);
 		$criteria->compare('SYARAT3',$this->SYARAT3,true);
-		$criteria->compare('SYARAT4',$this->SYARAT4,true);
-		$criteria->compare('SYARAT5',$this->SYARAT5,true);
+		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

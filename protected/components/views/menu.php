@@ -85,8 +85,8 @@
 						</a></li>
 						<?php }?>	
 						<?php }?>
-
-						<!-- <li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/ui')?>"><i class="icon-eye-open"></i><span
+						
+						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/ui')?>"><i class="icon-eye-open"></i><span
 								class="hidden-tablet"> UI Features</span> </a></li>
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/form')?>"><i class="icon-edit"></i><span
 								class="hidden-tablet"> Forms</span> </a></li>
@@ -114,8 +114,8 @@
 								class="icon-folder-open"></i><span class="hidden-tablet"> File
 									Manager</span> </a></li>
 						<li><a href="<?php echo Yii::app()->createUrl('site/index/view/tour')?>"><i class="icon-globe"></i><span
-								class="hidden-tablet"> Tour</span> </a></li> 
-						 -->
+								class="hidden-tablet"> Tour</span> </a></li>
+						 
 						
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input

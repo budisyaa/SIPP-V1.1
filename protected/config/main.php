@@ -8,7 +8,6 @@
 return array(
 		'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 		'name'=>'Sistem Informasi Penelitian Dan Pengembangan',
-		
 		// preloading 'log' component
 		'preload'=>array('log'),
 

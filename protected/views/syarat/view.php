@@ -26,7 +26,24 @@ $this->menu=array(
 		'SYARAT1',
 		'SYARAT2',
 		'SYARAT3',
-		'SYARAT4',
-		'SYARAT5',
 	),
 )); ?>
+<h3>Berkas Syarat:</h3>
+	<a href="<?php echo Yii::app()->request->baseUrl . '/upload/syarat/' . $model->SYARAT1; ?>">
+        <?php
+        /* menampilkan gambar */
+        echo CHtml::link(CHtml::encode($model->SYARAT1), Yii::app()->request->baseUrl . '/upload/syarat/' . $model->SYARAT1,array('target'=>'_blank'));
+        ?>
+    </a>
+    <a href="<?php echo Yii::app()->request->baseUrl . '/upload/syarat/' . $model->SYARAT2; ?>">
+        <?php
+        /* menampilkan gambar */
+        echo CHtml::link(CHtml::encode($model->SYARAT2), Yii::app()->request->baseUrl . '/upload/syarat/' . $model->SYARAT2,array('target'=>'_blank'));
+        ?>
+    </a>
+    <a href="<?php echo Yii::app()->request->baseUrl . '/upload/syarat/' . $model->SYARAT3; ?>">
+        <?php
+        /* menampilkan gambar */
+        echo CHtml::link(CHtml::encode($model->SYARAT3), Yii::app()->request->baseUrl . '/upload/syarat/' . $model->SYARAT3,array('target'=>'_blank'));
+        ?>
+    </a>

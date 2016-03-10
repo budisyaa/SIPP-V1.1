@@ -17,6 +17,7 @@ $this->breadcrumbs=array(
 				<h2>Selamat Datang di</h2>
 				<h1>Sistem Informasi Penelitian dan Pengembangan</h1>
 				<h1>Kabupaten Banyumas</h1>
+				<h1><img alt="Yiirisma Logo" src="<?php echo Yii::app()->baseUrl?>/img/logo-bappeda90.png" /></a></h1>
 			</div>
 			<div class="span12 center login-header">
 			</div>

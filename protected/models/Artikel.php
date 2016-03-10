@@ -29,6 +29,7 @@ class Artikel extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('JUDUL_ART, ISI_ART, FOTO_ART', 'length', 'max'=>1024),
+			array('STATUS', 'numerical', 'integerOnly' => true),
 			array('TANGGAL_POST', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -58,6 +59,7 @@ class Artikel extends CActiveRecord
 			'ISI_ART' => 'Isi Art',
 			'FOTO_ART' => 'Foto Art',
 			'TANGGAL_POST' => 'Tanggal Post',
+			'STATUS' => 'Status',
 		);
 	}
 

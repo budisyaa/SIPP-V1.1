@@ -27,33 +27,24 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'SYARAT1'); ?>
+	 	<label class="control-label" for="date01">Surat Permohonan dari Instansi/Institusi dan disetujui oleh Instansi/Institusi Pemohon</label>
+		<!-- <?php echo $form->labelEx($model,'SYARAT1'); ?> -->
 		<?php echo $form->fileField($model,'SYARAT1',array('size'=>60,'maxlength'=>1024)); ?>
 		<?php echo $form->error($model,'SYARAT1'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'SYARAT2'); ?>
+		<label class="control-label" for="date01">Identitas Pemohon (KTP/SIM/KTM)</label>
+		<!-- <?php echo $form->labelEx($model,'SYARAT2'); ?> -->
 		<?php echo $form->fileField($model,'SYARAT2',array('size'=>60,'maxlength'=>1024)); ?>
 		<?php echo $form->error($model,'SYARAT2'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'SYARAT3'); ?>
+		<label class="control-label" for="date01">Surat Izin/Rekomendasi dari Kantor Kesbangpol Kabupaten Banyumas</label>	
+		<!-- <?php echo $form->labelEx($model,'SYARAT3'); ?> -->
 		<?php echo $form->fileField($model,'SYARAT3',array('size'=>60,'maxlength'=>1024)); ?>
 		<?php echo $form->error($model,'SYARAT3'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'SYARAT4'); ?>
-		<?php echo $form->fileField($model,'SYARAT4',array('size'=>60,'maxlength'=>1024)); ?>
-		<?php echo $form->error($model,'SYARAT4'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'SYARAT5'); ?>
-		<?php echo $form->fileField($model,'SYARAT5',array('size'=>60,'maxlength'=>1024)); ?>
-		<?php echo $form->error($model,'SYARAT5'); ?>
 	</div>
 
 	<div class="row buttons">

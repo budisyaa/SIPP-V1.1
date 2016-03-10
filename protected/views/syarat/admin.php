@@ -52,8 +52,7 @@ $('.search-form form').submit(function(){
 		'SYARAT1',
 		'SYARAT2',
 		'SYARAT3',
-		'SYARAT4',
-		/*
+		/*'SYARAT4',
 		'SYARAT5',
 		*/
 		array(

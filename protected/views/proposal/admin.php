@@ -54,9 +54,11 @@ $('.search-form form').submit(function(){
 				'name'=>'NAMA_PROPOSAL',
 				'header'=>'Nama Proposal',
 				'type'=>'html',
-				'value'=>'CHtml::link("$data->NAMA_PROPOSAL", array("view", "id"=>$data->ID_PROPOSAL),array("title"=>"click to view order"))',
-				 
+				// 'value'=>'CHtml::link("$data->NAMA_PROPOSAL", array("view", "id"=>$data->ID_PROPOSAL),array("title"=>"click to view order"))',
+				'value'=>'CHtml::link(CHtml::encode($data->NAMA_PROPOSAL), Yii::app()->request->baseUrl . "/upload/proposal/" . $data->NAMA_PROPOSAL,array("target"=>"_blank"))',
 			),
+
+		
 		
 		array(
 			'class'=>'CButtonColumn',

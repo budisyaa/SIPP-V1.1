@@ -98,15 +98,13 @@ class AkunController extends Controller
             $model->SYARAT1=CUploadedFile::getInstance($model,'SYARAT1');
             $model->SYARAT2=CUploadedFile::getInstance($model,'SYARAT2');
             $model->SYARAT3=CUploadedFile::getInstance($model,'SYARAT3');
-            $model->SYARAT4=CUploadedFile::getInstance($model,'SYARAT4');
-            $model->SYARAT5=CUploadedFile::getInstance($model,'SYARAT5');
+ 
             /* jika changepassword maka direct ke halaman success */
             if ($model->save()) {
                 $model->SYARAT1->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT1 . '');
                 $model->SYARAT2->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT2 . '');
                 $model->SYARAT3->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT3 . '');
-                $model->SYARAT4->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT4 . '');
-                $model->SYARAT5->saveAs(Yii::app()->basePath . self::URLUPLOADSYARAT . $model->SYARAT5 . '');
+                
                 $this->redirect(array('/site/logout/'));
             }
         }
@@ -129,7 +127,7 @@ class AkunController extends Controller
                         /* jika changepassword maka direct ke halaman success */
             if ($model->save()) {
                 $pesertaModel->save();
-                $model->NAMA_PROPOSAL->saveAs(Yii::app()->basePath . self::URLUPLOADPROPOSAL . $model->ID_PROPOSAL . ' ' . $model->NAMA_PROPOSAL . '');
+                $model->NAMA_PROPOSAL->saveAs(Yii::app()->basePath . self::URLUPLOADPROPOSAL . $model->NAMA_PROPOSAL . '');
                 $this->redirect(array('akun/tambahsyarat/'));
             }
         }

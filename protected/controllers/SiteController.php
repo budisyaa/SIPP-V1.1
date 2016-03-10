@@ -2,6 +2,14 @@
 
 class SiteController extends Controller
 {
+	public function init()
+	{
+		/*Yii::app()->themeManager->basePath .= '/site';
+		Yii::app()->themeManager->baseUrl .= '/site';*/
+
+		Yii::app()->theme = 'web';
+	}
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -121,5 +129,21 @@ class SiteController extends Controller
 			$this->redirect('index');
 		else
 		$this->render('search');
+	}
+
+	public function actionSingle($id)
+	{
+		$this->layout = 'single';
+		$this->render('single', array(
+			'model'=>$this->loadModel($id),
+			));
+	}
+
+	public function loadModel($id)
+	{
+		$model=Artikel::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
 	}
 }

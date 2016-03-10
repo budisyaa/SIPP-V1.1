@@ -4,7 +4,7 @@ class ArtikelController extends Controller
 {
 	
 	public $layout='//layouts/column2';
-	const URLUPLOAD = '/upload/artikel/';
+	const URLUPLOAD = '/../upload/artikel/';
 
 	
 	public function actionView($id)
@@ -24,9 +24,13 @@ class ArtikelController extends Controller
 		if(isset($_POST['Artikel']))
 		{
 			$model->attributes=$_POST['Artikel'];
-			if($model->save())
+			$model->FOTO_ART=CUploadedFile::getInstance($model,'FOTO_ART');
+			$model->TANGGAL_POST= new CDbExpression('NOW()');
+			if($model->save()){
+				$model->FOTO_ART->saveAs(Yii::app()->basePath . self::URLUPLOAD . $model->FOTO_ART . '');
 				$this->redirect(array('view','id'=>$model->ID_ARTIKEL));
 		}
+	}
 
 		$this->render('create',array(
 			'model'=>$model,

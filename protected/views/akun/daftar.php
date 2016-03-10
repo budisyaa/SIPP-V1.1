@@ -126,7 +126,7 @@
                     <?php echo $form->error($model,'EMAIL'); ?>
                 </div>
                  
-                        <?php echo CHtml::submitButton("Daftar", array('class' => 'btn btn-primary')); ?>
+                        <?php echo CHtml::submitButton("Daftar", array('class' => 'btn btn-primary'),array('confirm'=> 'Are you Sure')); ?>
 
                         <button class="btn">Batal</button>
                         </div>
@@ -139,3 +139,5 @@
                   </div>
                 </div><!--/span-->
             </div><!--/row-->
+
+         

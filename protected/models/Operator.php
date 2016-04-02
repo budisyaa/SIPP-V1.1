@@ -1,32 +1,31 @@
 <?php
 
-/**
- * This is the model class for table "operator".
- *
- * The followings are the available columns in table 'operator':
- * @property integer $id_opr
- * @property string $nama_opr
- * @property string $username
- * @property string $password
- * @property string $foto_opr
- */
 class Operator extends CActiveRecord
 {
-	/**
-	 * @return string the associated database table name
-	 */
+
+	protected function beforeSave() {
+        if (parent::beforeSave()) {
+            $this->password = $this->encrypt($this->password);
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+
+    public function encrypt($value) {
+        return md5($value);
+    }
+	
+
 	public function tableName()
 	{
 		return 'operator';
 	}
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+
 		return array(
 			array('nama_opr, username, password, foto_opr', 'required'),
 			array('nama_opr, username, password', 'length', 'max'=>200),

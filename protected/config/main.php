@@ -33,6 +33,22 @@ return array(
 
 		// application components
 		'components'=>array(
+				'ePdf' => array(
+					'class' => 'ext.yii-pdf.EYiiPdf',
+					'params' => array(
+						'mpdf' => array(
+							'librarySourcePath' => 'application.vendor.mpdf.*',
+							'constants' => array (
+								'_MPDF_TEMP_PATH' => Yii::getPathOfAlias('application.runtime'),
+							),
+							'class' => 'mpdf',
+						),
+						'HTML2PDF' => array(
+							'librarySourcePath' => 'application.vendor.html2pdf.*',
+							'classFile' => 'html2pdf.class.php',
+						),
+					),
+				),
 				'image'=>array(
 					'class'=>'application.extensions.image.CImageComponent',
 					'driver'=>'GD',
@@ -58,7 +74,7 @@ return array(
 				
 
 				'db'=>array(
-				 'connectionString' => 'mysql:host=localhost;dbname=db_sipp',
+				 'connectionString' => 'mysql:host=localhost;dbname=sipp_db',
 						'emulatePrepare' => true,
 						'username' => 'root',
 						'password' => '',

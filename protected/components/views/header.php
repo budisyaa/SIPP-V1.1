@@ -12,7 +12,7 @@
 		http://twitter.com/halalit_usman
 	-->
 	<meta charset="utf-8">
-	<title>Free HTML5 Bootstrap Admin Template</title>
+	<title>Sistem Informasi Penelitian dan Pengembangan</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Yiirisma, a fully featured, responsive, HTML5, Bootstrap YII admin template.">
 	<meta name="author" content="Muhammad Usman">

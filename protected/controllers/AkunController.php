@@ -12,6 +12,15 @@ class AkunController extends Controller
     const URLUPLOADSYARAT = '/../upload/syarat/';
     const URLUPLOADPROPOSAL = '/../upload/proposal/';
 
+    public function actionPrintskp() {
+        $model = Peserta::model()->findByPk(Yii::app()->user->id);
+        $mPDF1 = Yii::app()->ePdf->mpdf('', 'A4');
+         # render (full page)
+        $mPDF1->WriteHTML(utf8_encode($this->renderPartial('printskp', array('model' => $model), true)));
+        # Outputs ready PDF
+        $mPDF1->Output();
+    }
+
 	public function actionIndex() {
         if (!isset(Yii::app()->user->pesertaLogin)) {
             $model = new PesertaLoginForm;

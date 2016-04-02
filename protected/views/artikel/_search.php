@@ -23,7 +23,12 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'ISI_ART'); ?>
-		<?php echo $form->textField($model,'ISI_ART',array('size'=>60,'maxlength'=>1024)); ?>
+		<?php echo $form->textField($model,'ISI_ART',array('size'=>60,'maxlength'=>10000)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'SINOPSIS'); ?>
+		<?php echo $form->textField($model,'SINOPSIS',array('size'=>60,'maxlength'=>1024)); ?>
 	</div>
 
 	<div class="row">

@@ -2,8 +2,8 @@
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-pills nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Main</li>
-						<li><a class="ajax-link" href="<?php echo Yii::app()->homeUrl?>"><i class="icon-home"></i><span
-								class="hidden-tablet"> Dashboard</span> </a></li>
+						<!-- <li><a class="ajax-link" href="<?php echo Yii::app()->homeUrl?>"><i class="icon-home"></i><span
+								class="hidden-tablet"> Dashboard</span> </a></li> -->
 						<!-- <?php foreach (Main::adminmenu() as $key=>$menu){
 							echo '<li><a class="ajax-link" href="'.Yii::app()->createUrl($menu['url']['0']).'"><i class="icon-home"></i><span
 								class="hidden-tablet"> '.$menu['label'].'</span> </a></li>';
@@ -18,9 +18,14 @@
 
 
 						<?php }?> -->
+
+						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('manageadmin/index')?>"><i class="icon-home"></i><span
+								class="hidden-tablet"> Dashboard</span> </a></li>
 						<?php
 						if(isset(Yii::app()->user->adminLogin)) {
 						?>
+
+
 						
 						<li><a class="ajax-link" href="<?php if(isset(Yii::app()->user->adminLogin)) echo Yii::app()->createUrl('/Manageadmin/admin')?>"><i
 								class="icon-user"></i><span class="hidden-tablet"> Data User</span>
@@ -86,7 +91,7 @@
 						<?php }?>	
 						<?php }?>
 						
-						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/ui')?>"><i class="icon-eye-open"></i><span
+						<!-- <li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/ui')?>"><i class="icon-eye-open"></i><span
 								class="hidden-tablet"> UI Features</span> </a></li>
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/form')?>"><i class="icon-edit"></i><span
 								class="hidden-tablet"> Forms</span> </a></li>
@@ -117,7 +122,7 @@
 								class="hidden-tablet"> Tour</span> </a></li>
 						 
 						
-					</ul>
+					</ul> -->
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input
 						id="is-ajax" type="checkbox"> Ajax on menu</label>
 				</div>

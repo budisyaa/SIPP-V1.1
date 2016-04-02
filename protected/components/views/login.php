@@ -11,7 +11,7 @@ $no_visible_elements=true;
 			<div class="row-fluid">
 				<div class="well span5 center login-box">
 					<div class="alert alert-info">
-						Please login with your Username and Password.
+						Please login withs your Username and Password.
 					</div>
 					<form class="form-horizontal" action="index.html" method="post">
 						<fieldset>

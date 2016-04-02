@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Personal Blog a Blogging Category Flat Bootstarp  Responsive Website Template | Home :: w3layouts</title>
+	<title>Sistem Informasi Penelitian dan Pengembangan : Kabupaten BANYUMAS</title>
 	<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" rel='stylesheet' type='text/css' />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="header">  
 	 <div class="container">
 		  <div class="logo">
-			  <a href="index.html"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.jpg" title="" /></a>
+			  <a href="/SIPP/"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.jpg" title="" /></a>
 		  </div>
 			 <!---start-top-nav---->
 			 <div class="top-menu">
@@ -52,11 +52,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					 <input type="submit" value=""/>
 					 </form>
 				 </div>
+
+
 				  <span class="menu"> </span> 
 				   <ul>
-						<li class="active"><a href="index.html">HOME</a></li>						
-						<li><a href="about.html">ABOUT</a></li>	
-						<li><a href="contact.html">CONTACT</a></li>						
+				   		<li><a href="/SIPP/">BERANDA</a></li>						
+						<li><a href="<?php echo Yii::app()->baseUrl?>/site/tentang">TENTANG KAMI</a></li>	
+						<li><a href="<?php echo Yii::app()->baseUrl?>/site/arsip">ARSIP</a></li>
+						<?php
+						if(isset(Yii::app()->user->pesertaLogin)) {
+						?>
+						<li><a href="<?php echo Yii::app()->baseUrl?>/akun/pesertainfo"><?php echo Yii::app()->user->name?></a></li>
+						<li><a href="site/logout">LOGOUT</a></li>
+						<?php }?>
+						<?php
+						if(!isset(Yii::app()->user->pesertaLogin) && !isset(Yii::app()->user->adminLogin)) {
+						?>
+						<li><a href="site/login">MASUK</a></li>
+						<li><a href="akun/daftar">DAFTAR</a></li>
+						<?php }?>						
 						<div class="clearfix"> </div>
 				 </ul>
 			 </div>
@@ -106,39 +120,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			  </div>
 			  <div class="col-md-4 content-right">
 				 <div class="recent">
-					 <h3>RECENT POSTS</h3>
+
+					 <h3>HASIL PENELITIAN</h3>
 					 <ul>
-					 <li><a href="#">Aliquam tincidunt mauris</a></li>
-					 <li><a href="#">Vestibulum auctor dapibus  lipsum</a></li>
-					 <li><a href="#">Nunc dignissim risus consecu</a></li>
-					 <li><a href="#">Cras ornare tristiqu</a></li>
-					 </ul>
-				 </div>
-				 <div class="comments">
-					 <h3>RECENT COMMENTS</h3>
-					 <ul>
-					 <li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
-					 <li><a href="#">Peter Doe </a> on <a href="#"> Photography</a></li>
-					 <li><a href="#">Steve Roberts  </a> on <a href="#">HTML5/CSS3</a></li>
-					 </ul>
-				 </div>
-				 <div class="clearfix"></div>
-				 <div class="archives">
-					 <h3>ARCHIVES</h3>
-					 <ul>
-					 <li><a href="#">October 2013</a></li>
-					 <li><a href="#">September 2013</a></li>
-					 <li><a href="#">August 2013</a></li>
-					 <li><a href="#">July 2013</a></li>
-					 </ul>
-				 </div>
-				 <div class="categories">
-					 <h3>CATEGORIES</h3>
-					 <ul>
-					 <li><a href="#">Vivamus vestibulum nulla</a></li>
-					 <li><a href="#">Integer vitae libero ac risus e</a></li>
-					 <li><a href="#">Vestibulum commo</a></li>
-					 <li><a href="#">Cras iaculis ultricies</a></li>
+					 <?php 
+				 		$modelHasil=Hasil::model()->findAll(
+					 		array(
+					 			'order'=>'ID_HASIL DESC',
+					 			'limit'=>'5',
+					 		)
+				 	);
+				 	foreach ($modelHasil as $dataHasil):
+				 ?>
+					 <li><a href="#"><?php echo CHtml::encode($dataHasil->NAMA_HASIL);?></a></li>
+					<?php endforeach; ?>
 					 </ul>
 				 </div>
 				 <div class="clearfix"></div>
@@ -150,8 +145,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!---->
 <div class="footer">
 	 <div class="container">
-	 <p>Copyrights © 2015 Blog All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+	 <p>Copyrights © 2016 Budi Sya'adal Fauzi <a href="http://if.unsoed.ac.id/portal/">Teknik Informatika</a> Universitas Jenderal Soedirman | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
 	 </div>
 </div>
-
-	

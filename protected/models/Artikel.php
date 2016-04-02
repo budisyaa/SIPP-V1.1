@@ -28,12 +28,13 @@ class Artikel extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('JUDUL_ART, ISI_ART, FOTO_ART', 'length', 'max'=>1024),
+			array('ISI_ART', 'length', 'max'=>10000),
+			array('JUDUL_ART, SINOPSIS, FOTO_ART', 'length', 'max'=>1024),
 			array('STATUS', 'numerical', 'integerOnly' => true),
 			array('TANGGAL_POST', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('ID_ARTIKEL, JUDUL_ART, ISI_ART, FOTO_ART, TANGGAL_POST', 'safe', 'on'=>'search'),
+			array('ID_ARTIKEL, JUDUL_ART, SINOPSIS, ISI_ART, FOTO_ART, TANGGAL_POST', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,6 +58,7 @@ class Artikel extends CActiveRecord
 			'ID_ARTIKEL' => 'Id Artikel',
 			'JUDUL_ART' => 'Judul Art',
 			'ISI_ART' => 'Isi Art',
+			'SINOPSIS' => 'Sinopsis',
 			'FOTO_ART' => 'Foto Art',
 			'TANGGAL_POST' => 'Tanggal Post',
 			'STATUS' => 'Status',
@@ -84,6 +86,7 @@ class Artikel extends CActiveRecord
 		$criteria->compare('ID_ARTIKEL',$this->ID_ARTIKEL);
 		$criteria->compare('JUDUL_ART',$this->JUDUL_ART,true);
 		$criteria->compare('ISI_ART',$this->ISI_ART,true);
+		$criteria->compare('SINOPSIS',$this->SINOPSIS,true);
 		$criteria->compare('FOTO_ART',$this->FOTO_ART,true);
 		$criteria->compare('TANGGAL_POST',$this->TANGGAL_POST,true);
 

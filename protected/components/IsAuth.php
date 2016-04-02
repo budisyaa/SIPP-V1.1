@@ -20,4 +20,15 @@ class IsAuth {
         }
     }
 
+    public static function Operator() {
+        if (!isset(Yii::app()->user->operatorLogin)) {
+            $this->redirect(array('operator/'));
+        }
+    }
+
+    public static function Staff() {
+        if (!isset(Yii::app()->user->operatorLogin) && !isset(Yii::app()->user->adminLogin)) {
+            $this->redirect(array('site/'));
+        }
+    }
 }

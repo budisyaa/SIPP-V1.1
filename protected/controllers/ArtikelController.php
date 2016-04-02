@@ -28,6 +28,10 @@ class ArtikelController extends Controller
 			$model->TANGGAL_POST= new CDbExpression('NOW()');
 			if($model->save()){
 				$model->FOTO_ART->saveAs(Yii::app()->basePath . self::URLUPLOAD . $model->FOTO_ART . '');
+				$name = getcwd() . '/upload/artikel/' . $model->FOTO_ART;
+	            $image = Yii::app()->image->load($name);
+	            $image->resize(669,320);
+	            $image->save();
 				$this->redirect(array('view','id'=>$model->ID_ARTIKEL));
 		}
 	}

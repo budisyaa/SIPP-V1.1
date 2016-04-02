@@ -11,7 +11,7 @@ class AdminController extends Controller
 	public function actionIndex()
 	{
 		if (isset(Yii::app()->user->adminLogin) == TRUE) {
-            $this->redirect(array('peserta/admin'));
+            $this->redirect(array('manageadmin/index'));
         }
         /* panggil model AdminLoginForm
          * dan di tampung oleh $model */
@@ -35,7 +35,7 @@ class AdminController extends Controller
                 /* redirect ke halaman yang diinginkan
                  * (dalam hal ini kita direct ke halaman product/admin)
                  * */
-                $this->redirect(array('manageadmin/admin'));
+                $this->redirect(array('manageadmin/index'));
             }
         }
         // tampilkan login form

@@ -67,7 +67,7 @@ class ManageadminController extends Controller
             $model->password = md5($model->password);            
             /* jika changepassword maka direct ke halaman success */
             if ($model->save()){
-                $model->FOTO_PESERTA->saveAs(Yii::app()->basePath . self::URLUPLOAD . $model->FOTO_ADMIN . '');
+                $model->FOTO_ADMIN->saveAs(Yii::app()->basePath . self::URLUPLOAD . $model->FOTO_ADMIN . '');
                 $this->redirect(array('manageadmin/admin/'));
             }
         }
@@ -118,11 +118,19 @@ class ManageadminController extends Controller
 	 */
 	public function actionIndex()
 	{
-		IsAuth::Admin();
+		/*IsAuth::Admin();
 		$dataProvider=new CActiveDataProvider('Admin');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
+		));*/
+		# mPDF
+        $mPDF1 = Yii::app()->ePdf->mpdf('', 'A4');
+ 
+         # render (full page)
+        $mPDF1->WriteHTML(utf8_encode($this->renderPartial('index', array(), true)));
+ 
+        # Outputs ready PDF
+        $mPDF1->Output();
 	}
 
 	/**

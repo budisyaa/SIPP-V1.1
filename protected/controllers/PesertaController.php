@@ -19,23 +19,26 @@ class PesertaController extends Controller
 	
 	public function actionCreate()
 	{
-		IsAuth::Admin();
-		$model=new Peserta;
+		if (!isset(Yii::app()->user->operatorLogin) && !isset(Yii::app()->user->adminLogin)) {
+			$this->redirect(array('/site'));
+		} else {
+			$model=new Peserta;
+			if(isset($_POST['Peserta']))
+			{
+				$model->attributes=$_POST['Peserta'];
+				$model->code_reg=Peserta::randomCode();
+				$model->FOTO_PESERTA=CUploadedFile::getInstance($model,'FOTO_PESERTA');
+				if($model->save())
+					$model->FOTO_PESERTA->saveAs(Yii::app()->basePath . self::URLUPLOAD . $model->FOTO_PESERTA . '');
+					$this->redirect(array('view','id'=>$model->ID_PESERTA));
+			}
 
-		
-		if(isset($_POST['Peserta']))
-		{
-			$model->attributes=$_POST['Peserta'];
-			$model->code_reg=Peserta::randomCode();
-			$model->FOTO_PESERTA=CUploadedFile::getInstance($model,'FOTO_PESERTA');
-			if($model->save())
-				$model->FOTO_PESERTA->saveAs(Yii::app()->basePath . self::URLUPLOAD . $model->FOTO_PESERTA . '');
-				$this->redirect(array('view','id'=>$model->ID_PESERTA));
+			$this->render('create',array(
+				'model'=>$model,
+			));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		
+		
 	}
 
 	public function actionPeserta()

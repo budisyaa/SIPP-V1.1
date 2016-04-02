@@ -28,8 +28,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ISI_ART'); ?>
-		<?php echo $form->textField($model,'ISI_ART',array('size'=>60,'maxlength'=>1024)); ?>
+		<?php echo $form->textArea($model,'ISI_ART',array('size'=>60,'maxlength'=>10000)); ?>
 		<?php echo $form->error($model,'ISI_ART'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'SINOPSIS'); ?>
+		<?php echo $form->textArea($model,'SINOPSIS',array('size'=>60,'maxlength'=>1024)); ?>
+		<?php echo $form->error($model,'SINOPSIS'); ?>
 	</div>
 
 	<div class="row">

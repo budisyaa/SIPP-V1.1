@@ -14,11 +14,9 @@ $this->menu=array(
 	array('label'=>'Delete Peserta', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID_PESERTA),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Peserta', 'url'=>array('admin')),
 );
-
-
 ?>
 
-<h1>Profil Peserta <?php echo $model->NAMA; ?></h1>
+<h1>View Peserta <?php echo $model->NAMA; ?></h1>
 
 <a href="<?php echo Yii::app()->request->baseUrl . '/upload/foto_peserta/' . $model->FOTO_PESERTA; ?>">
         <?php
@@ -50,11 +48,11 @@ $this->menu=array(
 		'MASA_BERLAKU_AWAL',
 		'MASA_BERLAKU_AKHIR',
 		'TANGGAL_MODIFIKASI',
+		'TANGGAL_DAFTAR',
 		'TEMPAT_LAHIR',
 		'TANGGAL_LAHIR',
-		'code_reg'
+		'code_reg',
+		'status_peserta',
+		'STATUS_HASIL',
 	),
-
 )); ?>
-
-

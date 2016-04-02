@@ -17,6 +17,10 @@
 	<?php echo CHtml::encode($data->ISI_ART); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('SINOPSIS')); ?>:</b>
+	<?php echo CHtml::encode($data->SINOPSIS); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('FOTO_ART')); ?>:</b>
 	<?php echo CHtml::encode($data->FOTO_ART); ?>
 	<br />

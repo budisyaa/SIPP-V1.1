@@ -48,6 +48,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'ID_ARTIKEL',
 		'JUDUL_ART',
 		'ISI_ART',
+		'SINOPSIS',
 		'FOTO_ART',
 		'TANGGAL_POST',
 		array(

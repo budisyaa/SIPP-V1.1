@@ -18,9 +18,6 @@ $this->menu=array(
 
 <h1>Kelola Data Peserta</h1>
 
-
-
-
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'peserta-grid',
 	'dataProvider'=>$model->search(),

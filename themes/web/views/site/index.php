@@ -25,7 +25,12 @@
 
  <?php
 /*ambil semua data kategori*/
-$model=Artikel::model()->findAll();
+$model=Artikel::model()->findAll(
+	array(
+					 			'order'=>'ID_ARTIKEL DESC',
+					 			'limit'=>'5',
+					 			)
+	);
 /*foreach data kategori*/
 foreach ($model as $data):
 ?>
@@ -33,8 +38,8 @@ foreach ($model as $data):
 		<img src="<?php echo Yii::app()->request->baseUrl . '/upload/artikel/' . $data->FOTO_ART; ?>" alt=""/>
 		<div class="post-info">
 			<h4><a href="#"><?php echo CHtml::encode($data->JUDUL_ART);?></a><?php echo CHtml::encode($data->TANGGAL_POST);?></h4>
-			<p><?php echo CHtml::encode($data->ISI_ART);?></p>
-			<a href=""><span></span>LEBIH LANJUT</a>
+			<p><?php echo CHtml::encode($data->SINOPSIS);?></p>
+			<a><span></span><?php echo CHtml::link(CHtml::encode("Selengkapnya"), array('single', 'id' => $data -> ID_ARTIKEL,)); ?></a>
 		</div>
 	</div>
 <?php endforeach;?>

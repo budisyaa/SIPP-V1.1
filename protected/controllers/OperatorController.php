@@ -2,136 +2,53 @@
 
 class OperatorController extends Controller
 {
-	
-	public $layout='//layouts/column2';
-
-	const URLUPLOAD = '/upload/foto_admin/';
-
 	/**
-	 * @return array action filters
+	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
+	public $layout='//layouts/login';
 
-	
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
-
-	
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
-
-	
-	public function actionCreate()
-	{
-		$model=new Operator;
-
-		
-		if(isset($_POST['Operator']))
-		{
-			$model->attributes=$_POST['Operator'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_opr));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		
-		if(isset($_POST['Operator']))
-		{
-			$model->attributes=$_POST['Operator'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_opr));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Operator');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		if (isset(Yii::app()->user->operatorLogin) == TRUE) {
+            $this->redirect(array('peserta/admin'));
+        }
+        /* panggil model AdminLoginForm
+         * dan di tampung oleh $model */
+        $model = new OperatorLoginForm;
+
+        // jika ajax maka divalidasi dengan ajax
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
+            /* tampilkan hasil validasi form */
+            echo CActiveForm::validate($model);
+            /* end/exit/die */
+            Yii::app()->end();
+        }
+
+        // ambil data yang diinput oleh user
+        if (isset($_POST['OperatorLoginForm'])) {
+            $model->attributes = $_POST['OperatorLoginForm'];
+            /* validaasi data yang diinput oleh user dan
+             * jika valid maka ...
+             */
+            if ($model->validate() && $model->login()) {
+                /* redirect ke halaman yang diinginkan
+                 * (dalam hal ini kita direct ke halaman product/admin)
+                 * */
+                $this->redirect(array('manageoperator/admin'));
+            }
+        }
+        // tampilkan login form
+        $this->render('index', array('model' => $model));
 	}
 
-	
-	public function actionAdmin()
-	{
-		$model=new Operator('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Operator']))
-			$model->attributes=$_GET['Operator'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	
-	public function loadModel($id)
-	{
-		$model=Operator::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
-	}
-
-	
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='operator-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
+        /**
+     * Log out, dan akan didirect ke halaman homepage.
+     */
+    public function actionLogout() {
+        /* logout user */
+        Yii::app()->user->logout();
+        /* direct ke halaman yang diinginkan */
+        $this->redirect(array('/operator'));
+    }
 }

@@ -99,9 +99,27 @@
 				</div>
 				<?php }?>
 
+				<?php
+					if(isset(Yii::app()->user->operatorLogin)) {
+				?>
+				<div class="btn-group pull-right">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i
+						class="icon-user"></i><span class="hidden-phone"> <?php echo Yii::app()->user->name?>
+					</span> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="<?php echo Yii::app()->baseUrl?>#">Profil</a></li>
+						<li class="divider"></li>
+						<li><a href="<?php echo Yii::app()->baseUrl?>/Manageadmin/updateadmin">Ubah Profil</a></li>
+						<li class="divider"></li>
+						<li><?php echo CHtml::link('Logout',array('/admin/logout'));?></li>
+					</ul>
+				</div>
+				<?php }?>
+
 
 				<?php
-					if(!isset(Yii::app()->user->pesertaLogin) && !isset(Yii::app()->user->adminLogin)) {
+					if(!isset(Yii::app()->user->pesertaLogin) && !isset(Yii::app()->user->adminLogin) && !isset(Yii::app()->user->operatorLogin)) {
 				?>
 				<div class="top-nav nav-collapse">
 					<ul class="nav">
@@ -174,11 +192,10 @@
 		</div>
 		<footer>
 			<p class="pull-left">
-				<a href="http://rkchaulagain.com.np" target="_blank">Ramkrishna
-					Chaulagain</a> 2012
+				Copyright 2016 | Budi Sya'adal Fauzi Teknik Informatika Universitas Jenderal Soedirman
 			</p>
 			<p class="pull-right">
-				Powered by: <a href="https://github.com/Chaulagain-Softwares/yiirisma">Yiirisma</a>
+				Template by : <a href="https://github.com/Chaulagain-Softwares/yiirisma">Yiirisma</a>
 			</p>
 		</footer>
 	</div>

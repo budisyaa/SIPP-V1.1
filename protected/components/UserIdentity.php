@@ -12,7 +12,7 @@ class UserIdentity extends CUserIdentity
 	public function authenticate(){
 	
         /* find data dengan atribut username
-         * menggunakan model Admin */
+         * menggunakan model peserta */
         $user = Peserta::model()->findByAttributes(array('username' => $this->username));
         $status = Peserta::model()->findByAttributes(array('status_peserta' => '0', 'username' =>$this->username));
         /* jika user hasilnya null maka
